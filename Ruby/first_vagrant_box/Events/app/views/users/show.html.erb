@@ -1,0 +1,46 @@
+<h1>Welcome, <%= current_user.first_name %></h1>
+<a href="/users/<%= current_user.id %>/edit">Edit Your Profile</a>
+
+<h3>Here are some of the events at your state:</h3>
+<table class="table">
+	<thead>
+		<th>Name</th>
+		<th>Date</th>
+		<th>Location</th>
+		<th>Host</th>
+		<th>Action/Status</th>	
+	</thead>
+	<tbody>
+		<% @my_state_events.each do |e| %>
+		<tr>
+			<td><%= e.name %></td>
+			<td><%= e.date %></td>
+			<td><%= e.location %></td>
+		</tr>
+		<% end %>
+	
+	</tbody>
+</table>
+
+<h3>Add Event</h3>
+<form action="/events" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<p>
+	<label for="event_name">Event Name</label>
+	<input type="text" name="event[name]">
+</p>
+<p>
+	<label for="date">Date</label>
+	<input type="date" name="event[date]">
+</p>
+<p>
+	<label for="location">Location</label>
+	<input type="text" name="event[location]">
+</p>
+<p>
+	<label for="staten">State</label>
+	<input type="text" name="event[state]">
+</p>
+<input type="hidden" name="event[users_id]" value="<%= current_user.id %>">
+<input type="submit" value="Add Event">
+</form>

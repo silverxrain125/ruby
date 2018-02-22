@@ -1,0 +1,30 @@
+<h1>Edit Your Profile</h1>
+
+<form action="/users/<%= current_user.id %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch">
+    <p> <label for="first_name">First Name</label>
+        <input type="text" name ="user[first_name]" value="<%= @user.first_name %>">
+    </p>
+    <p> <label for="last_name">Last Name</label>
+        <input type="text" name ="user[last_name]" value="<%= @user.last_name %>">
+    </p>
+    <p> <label for="email">Email</label>
+        <input type="email" name ="user[email]" value="<%= @user.email %>">
+    </p>
+    <p> <label for="location">Location</label>
+        <input type="location" name ="user[location]" value="<%= @user.location %>">
+    </p>
+    <p> <label for="state">State</label>
+        <input type="state" name ="user[state]" value="<%= @user.state %>">
+    </p>
+    <p> <label for="password">Password</label>
+        <input type="password" name ="user[password]" value="<%= @user.password %>">
+    </p>
+    <p> <label for="password_confirmation">Password Confirmation</label>
+        <input type="password" name ="user[password_confirmation]" value="<%= @user.password_confirmation %>">
+    </p>
+    <input type="submit" value="Edit">
+</form>
+
+</form>
